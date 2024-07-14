@@ -85,10 +85,6 @@ public class BookList {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
 
-            if (reader.readLine() == null) {
-                System.out.println("Not have any data");
-                return;
-            }
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
@@ -107,15 +103,7 @@ public class BookList {
 
         try (BufferedWriter write = new BufferedWriter(new FileWriter(fileName))) {
             for (Book book : t) {
-                StringBuilder data = new StringBuilder();
-                data.append(book.getCode())
-                        .append(",")
-                        .append(book.getPrice())
-                        .append(",")
-                        .append(book.getQua())
-                        .append(",")
-                        .append(book.getTitle());
-                write.write(data.toString());
+                write.write(book.toString());
                 write.newLine();
             }
             System.out.println("Write from list to file completed.");
